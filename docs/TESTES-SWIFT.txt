@@ -1,0 +1,44 @@
+Building for debugging...
+[0/3] Write sources
+[1/3] Write swift-version--1AB21518FC5DEDBE.txt
+[3/6] Compiling AtendeBemUI Components.swift
+[4/6] Emitting module AtendeBemUI
+[5/6] Compiling AtendeBemUI AppState.swift
+[6/6] Compiling AtendeBemUI LoginView.swift
+[7/12] Compiling AtendeBemUI TodayView.swift
+[8/12] Compiling AtendeBemUI RootView.swift
+[9/12] Compiling AtendeBemUI Previews.swift
+[10/12] Compiling AtendeBemUI MoreView.swift
+[11/12] Compiling AtendeBemUI AgendaView.swift
+[12/12] Compiling AtendeBemUI PatientsView.swift
+Build complete! (5.57s)
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test rejectedRefreshClearsSession() started.
+◇ Test transientRefreshFailurePreservesCredentials() started.
+◇ Test invalidAndInsecureEndpointsAreRejected() started.
+◇ Test writesAreNeverAutomaticallyReplayed() started.
+◇ Test clinicSwitchDiscardsPreviousClinicResponse() started.
+◇ Test loginSupportsMFAWithoutCreatingSession() started.
+◇ Test concurrentExpiredRequestsShareOneRefresh() started.
+◇ Test unavailableClinicalInformationIsNotDecodedAsEmpty() started.
+◇ Test concurrentUnauthorizedReadsRefreshOnlyOnce() started.
+◇ Test searchQueryIsEncodedWithoutChangingRoute() started.
+◇ Test clinicDayUsesServerTimeZoneAcrossMidnight() started.
+◇ Test logoutDiscardsLateResponse() started.
+◇ Test administrativeRoleCannotConfirmAppointmentsOrReadClinicalData() started.
+✔ Test unavailableClinicalInformationIsNotDecodedAsEmpty() passed after 0.001 seconds.
+✔ Test administrativeRoleCannotConfirmAppointmentsOrReadClinicalData() passed after 0.012 seconds.
+✔ Test invalidAndInsecureEndpointsAreRejected() passed after 0.013 seconds.
+✔ Test searchQueryIsEncodedWithoutChangingRoute() passed after 0.013 seconds.
+✔ Test loginSupportsMFAWithoutCreatingSession() passed after 0.014 seconds.
+✔ Test logoutDiscardsLateResponse() passed after 0.013 seconds.
+✔ Test clinicSwitchDiscardsPreviousClinicResponse() passed after 0.014 seconds.
+✔ Test rejectedRefreshClearsSession() passed after 0.014 seconds.
+✔ Test writesAreNeverAutomaticallyReplayed() passed after 0.015 seconds.
+✔ Test transientRefreshFailurePreservesCredentials() passed after 0.015 seconds.
+✔ Test clinicDayUsesServerTimeZoneAcrossMidnight() passed after 0.023 seconds.
+✔ Test concurrentUnauthorizedReadsRefreshOnlyOnce() passed after 0.068 seconds.
+✔ Test concurrentExpiredRequestsShareOneRefresh() passed after 0.069 seconds.
+✔ Test run with 13 tests in 0 suites passed after 0.069 seconds.

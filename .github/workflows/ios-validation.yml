@@ -1,0 +1,52 @@
+name: iOS validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [atendebem-upstream-changed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  automation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate automation and publishing checks
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
+
+  native-validation:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+      - name: Test session and API invariants
+        run: bash scripts/test-local.sh
+      - name: Compile the iOS application
+        run: >-
+          xcodebuild -project AtendeBem.xcodeproj -scheme AtendeBem
+          -configuration Debug -destination 'generic/platform=iOS Simulator'
+          -derivedDataPath .build/ios CODE_SIGNING_ALLOWED=NO
+          ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build
+      - name: Validate prepared App Store materials
+        run: python3 scripts/app_store_bundle.py validate
+
+# This workflow becomes active only after the iOS project is published as its
+# own repository. Dispatch validates this revision; it does not translate SwiftUI,
+# inspect a deployment, sign an archive, upload a binary, or modify the web app.
