@@ -1,5 +1,5 @@
 {
-  "kind": "reviewable_setup_plan_not_a_deployed_apple_workflow",
+  "kind": "observed_setup_and_remaining_validation_plan_not_importable",
   "repository_url": "https://github.com/Oryum-Tech/AtendeBem_IOS.git",
   "branch": "main",
   "container_file_path": "AtendeBem.xcodeproj",
@@ -10,7 +10,10 @@
     "apple_id": "6762195438",
     "development_team": "FWVSMZ9APG",
     "deployment_target": "17.0",
-    "device_families": ["iPhone", "iPad"]
+    "device_families": [
+      "iPhone",
+      "iPad"
+    ]
   },
   "environment": {
     "xcode": "latest stable version available in Xcode Cloud with Swift 6",
@@ -21,24 +24,47 @@
   },
   "validation": {
     "name": "AtendeBem — Validação",
-    "start": ["main changes", "pull requests into main"],
-    "actions": ["Build Debug iOS", "Analyze iOS", "Test iPhone", "Test iPad"],
-    "post_clone_checks": ["Python automation tests", "Swift package tests"],
-    "distribution": "none"
+    "start": [
+      "main changes",
+      "pull requests into main"
+    ],
+    "actions": [
+      "Build Debug iOS",
+      "Analyze iOS",
+      "Test iPhone",
+      "Test iPad"
+    ],
+    "post_clone_checks": [
+      "Python automation tests",
+      "Swift package tests"
+    ],
+    "distribution": "none",
+    "status": "separate simulator workflow not yet created; package tests run in existing archive post-clone"
   },
   "archive": {
-    "name": "AtendeBem — Archive e TestFlight",
-    "start": "manual",
+    "name": "AtendeBem — Archive",
+    "start": "main changes and manual",
     "configuration": "Release",
     "platform": "iOS",
     "signing": "Apple managed signing for FWVSMZ9APG",
-    "distribution": "internal TestFlight after validation",
+    "distribution": "internal TestFlight post-action to existing Beta Interna group",
     "public_review_submission": "explicit separate action"
   },
-  "cloud_build_number": "10000 + CI_BUILD_NUMBER; range 10001...99999",
+  "cloud_build_number": "Apple managed product sequence; next number set to 10001 after successful build 8",
   "activation_evidence_required": [
     "Apple product and repository identifiers read from authenticated API or UI",
     "Saved workflow and selected Xcode/macOS versions",
     "Successful build run for exact published commit"
-  ]
+  ],
+  "observed": {
+    "workflow_id": "40B7B87F-3D47-437C-88F0-CEE4969A022F",
+    "successful_build": 8,
+    "source_sha": "76dc1dcf588986eef9fbbe0a7c62ae70e6f907ff",
+    "python_tests": 57,
+    "swift_tests": 356,
+    "xcode": "27 (27A266a)",
+    "macos": "Golden Gate 27 (26A428)",
+    "testflight": "1.3.0 (8), internal, ready to test",
+    "next_build_number": 10001
+  }
 }

@@ -23,7 +23,7 @@ O build **1.3.0 (40)** foi processado pela Apple em 03/10/2026 e está disponív
 
 Abra **Preparar AtendeBem.command** para preparar Archive, exportar IPA e abrir o Transporter. O envio é explícito. Credenciais ficam fora do projeto. Consulte [Archive e Transporter](docs/ARCHIVE-E-TRANSPORTER.md).
 
-O destino Git é [Oryum-Tech/AtendeBem_IOS](https://github.com/Oryum-Tech/AtendeBem_IOS). GitHub Actions valida o código e compila sem assinatura. Os scripts do Xcode Cloud estão preparados; a conexão e a execução remota precisam de confirmação na Apple. Consulte [GitHub e Xcode Cloud](docs/GITHUB-E-XCODE-CLOUD.md).
+O destino Git é [Oryum-Tech/AtendeBem_IOS](https://github.com/Oryum-Tech/AtendeBem_IOS). GitHub Actions valida o código e compila sem assinatura. O Xcode Cloud está conectado ao repositório da Oryum e concluiu uma execução real com57 verificações Python,356 testes Swift e Archive. A entrega automática à Beta Interna está configurada. Consulte [GitHub e Xcode Cloud](docs/GITHUB-E-XCODE-CLOUD.md).
 
 ## Estrutura
 
