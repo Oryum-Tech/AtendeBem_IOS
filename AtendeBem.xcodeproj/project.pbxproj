@@ -22,6 +22,7 @@
 		E71B5AA7306C9E6B00BC4C89 /* ClinicalSafetyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalSafetyView.swift; sourceTree = "<group>"; };
 		E71B5AA8306C9F4600BC4C89 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		E71B5AA9306CA13000BC4C89 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		B10000000000000000000001 /* App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/App.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,35 +38,35 @@
 
 /* Begin PBXGroup section */
 		A00000000000000000000002 = {
-			isa = PBXGroup;
-			children = (
-				A00000000000000000000003 /* App */,
-				E71B5AA4306C9E6600BC4C89 /* TodayView.swift */,
-				E71B5AA5306C9E6800BC4C89 /* AgendaView.swift */,
-				E71B5AA6306C9E6900BC4C89 /* PrivacySupportView.swift */,
-				E71B5AA7306C9E6B00BC4C89 /* ClinicalSafetyView.swift */,
-				E71B5AA8306C9F4600BC4C89 /* APIClientTests.swift */,
-				E71B5AA9306CA13000BC4C89 /* Brand.swift */,
-				A00000000000000000000004 /* Products */,
+			"isa" = "PBXGroup";
+			"sourceTree" = "<group>";
+			"children" = (
+				"A00000000000000000000003",
+				"A00000000000000000000004",
+				"723F34AF370055E171384F51",
+				"B10000000000000000000001",
+				"3B3E4A897822A70EFDED4245",
 			);
-			sourceTree = "<group>";
 		};
-		A00000000000000000000003 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				A00000000000000000000005 /* AtendeBemApp.swift */,
-				A00000000000000000000021 /* Assets.xcassets */,
+		A00000000000000000000003 = {
+			"path" = "App";
+			"isa" = "PBXGroup";
+			"children" = (
+				"A00000000000000000000005",
+				"A00000000000000000000021",
+				"4244B5C2A59D2479C6BA34FC",
 			);
-			path = App;
-			sourceTree = "<group>";
+			"sourceTree" = "<group>";
 		};
-		A00000000000000000000004 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A00000000000000000000006 /* AtendeBem.app */,
+		A00000000000000000000004 = {
+			"isa" = "PBXGroup";
+			"name" = "Products";
+			"children" = (
+				"A00000000000000000000006",
+				"EE7ADD5C67FF8B0537F24844",
+				"8834B2781B9750E8A6A331DA",
 			);
-			name = Products;
-			sourceTree = "<group>";
+			"sourceTree" = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -93,48 +94,58 @@
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A00000000000000000000001 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2600;
-				TargetAttributes = {
-					A00000000000000000000011 = {
-						CreatedOnToolsVersion = 26.0;
+		A00000000000000000000001 = {
+			"buildConfigurationList" = "A00000000000000000000012";
+			"packageReferences" = (
+				"A00000000000000000000018",
+			);
+			"targets" = (
+				"A00000000000000000000011",
+				"332802E2CB157A5131EBF1DD",
+				"8E79D5AB9C573D21367FEC97",
+			);
+			"developmentRegion" = "pt-BR";
+			"knownRegions" = (
+				"pt-BR",
+				"en",
+				"Base",
+			);
+			"isa" = "PBXProject";
+			"compatibilityVersion" = "Xcode 15.0";
+			"productRefGroup" = "A00000000000000000000004";
+			"projectDirPath" = "";
+			"attributes" = {
+				"LastSwiftUpdateCheck" = "2600";
+				"BuildIndependentTargetsInParallel" = "YES";
+				"LastUpgradeCheck" = "2600";
+				"TargetAttributes" = {
+					"A00000000000000000000011" = {
+						"CreatedOnToolsVersion" = "26.0";
+					};
+					"332802E2CB157A5131EBF1DD" = {
+						"CreatedOnToolsVersion" = "27.0";
+					};
+					"8E79D5AB9C573D21367FEC97" = {
+						"CreatedOnToolsVersion" = "27.0";
+						"TestTargetID" = "A00000000000000000000011";
 					};
 				};
 			};
-			buildConfigurationList = A00000000000000000000012 /* Build configuration list for PBXProject "AtendeBem" */;
-			compatibilityVersion = "Xcode 15.0";
-			developmentRegion = "pt-BR";
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				"pt-BR",
-				en,
-				Base,
-			);
-			mainGroup = A00000000000000000000002;
-			packageReferences = (
-				A00000000000000000000018 /* XCLocalSwiftPackageReference "Packages/AtendeBemKit" */,
-			);
-			productRefGroup = A00000000000000000000004 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				A00000000000000000000011 /* AtendeBem */,
-			);
+			"hasScannedForEncodings" = "0";
+			"projectRoot" = "";
+			"mainGroup" = "A00000000000000000000002";
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A00000000000000000000010 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A00000000000000000000022 /* Assets.xcassets in Resources */,
+		A00000000000000000000010 = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"A00000000000000000000022",
+				"7DD080270FAF0DDA32D5F04C",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			"runOnlyForDeploymentPostprocessing" = "0";
 		};
 /* End PBXResourcesBuildPhase section */
 
@@ -180,22 +191,18 @@
 		};
 		A00000000000000000000016 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B10000000000000000000001 /* App.xcconfig */;
 			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = io.atendebem.app;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FWVSMZ9APG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = AtendeBem;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.atendebem.profissionais;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -205,22 +212,18 @@
 		};
 		A00000000000000000000017 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B10000000000000000000001 /* App.xcconfig */;
 			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = io.atendebem.app;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FWVSMZ9APG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = AtendeBem;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.atendebem.profissionais;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -265,6 +268,252 @@
 			productName = AtendeBemUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+/* Native test targets and privacy resource */
+		723F34AF370055E171384F51 = {
+			"isa" = "PBXGroup";
+			"name" = "Rascunhos do editor (fora do build)";
+			"sourceTree" = "<group>";
+			"children" = (
+				"E71B5AA4306C9E6600BC4C89",
+				"E71B5AA5306C9E6800BC4C89",
+				"E71B5AA6306C9E6900BC4C89",
+				"E71B5AA7306C9E6B00BC4C89",
+				"E71B5AA8306C9F4600BC4C89",
+				"E71B5AA9306CA13000BC4C89",
+			);
+		};
+		4244B5C2A59D2479C6BA34FC = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.xml";
+			"path" = "PrivacyInfo.xcprivacy";
+			"sourceTree" = "<group>";
+		};
+		7DD080270FAF0DDA32D5F04C = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "4244B5C2A59D2479C6BA34FC";
+		};
+		3B3E4A897822A70EFDED4245 = {
+			"isa" = "PBXGroup";
+			"name" = "Testes";
+			"sourceTree" = "<group>";
+			"children" = (
+				"6A56C0B1ED9D4EE6A2AAF47E",
+				"949136E424595ABB1B7B3494",
+				"A73DB167329B45F0AC121CE1",
+				"EE6063B603CD960BD24231AA",
+			);
+		};
+		6A56C0B1ED9D4EE6A2AAF47E = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Packages/AtendeBemKit/Tests/AtendeBemCoreTests/APIClientTests.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		FCC42B71CDD6C6D872F1001B = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "6A56C0B1ED9D4EE6A2AAF47E";
+		};
+		949136E424595ABB1B7B3494 = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Packages/AtendeBemKit/Tests/AtendeBemCoreTests/WorkflowTests.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		07B349E61E4B9ED7B3A1D624 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "949136E424595ABB1B7B3494";
+		};
+		A73DB167329B45F0AC121CE1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Packages/AtendeBemKit/Tests/AtendeBemCoreTests/CollaborationTests.swift"; sourceTree = SOURCE_ROOT; };
+		A73DB167329B45F0AC121CE2 = { isa = PBXBuildFile; fileRef = A73DB167329B45F0AC121CE1; };
+		E3E6EE6C6A101FC0F60CBEB8 = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"FCC42B71CDD6C6D872F1001B",
+				"07B349E61E4B9ED7B3A1D624",
+				"A73DB167329B45F0AC121CE2",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		EE7ADD5C67FF8B0537F24844 = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.cfbundle";
+			"includeInIndex" = "0";
+			"path" = "AtendeBemCoreTests.xctest";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		4318D6942B79354BFEEA4E6B = {
+			"isa" = "XCSwiftPackageProductDependency";
+			"package" = "A00000000000000000000018";
+			"productName" = "AtendeBemCore";
+		};
+		332837AD96A5F59A0C39E586 = {
+			"isa" = "PBXBuildFile";
+			"productRef" = "4318D6942B79354BFEEA4E6B";
+		};
+		036D2F160D68EA86C2AB3EF2 = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"332837AD96A5F59A0C39E586",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		78FDE954E5C242500B41D884 = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "io.atendebem.app.core-tests";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"DEVELOPMENT_TEAM" = "FWVSMZ9APG";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"SWIFT_VERSION" = "6.0";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+			};
+		};
+		D2A4AFDA22AA77F2F0EA193E = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "io.atendebem.app.core-tests";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"DEVELOPMENT_TEAM" = "FWVSMZ9APG";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"SWIFT_VERSION" = "6.0";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+			};
+		};
+		2758C9CD1D0F960C402AA10B = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"78FDE954E5C242500B41D884",
+				"D2A4AFDA22AA77F2F0EA193E",
+			);
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		332802E2CB157A5131EBF1DD = {
+			"isa" = "PBXNativeTarget";
+			"name" = "AtendeBemCoreTests";
+			"productName" = "AtendeBemCoreTests";
+			"productReference" = "EE7ADD5C67FF8B0537F24844";
+			"productType" = "com.apple.product-type.bundle.unit-test";
+			"buildConfigurationList" = "2758C9CD1D0F960C402AA10B";
+			"buildPhases" = (
+				"E3E6EE6C6A101FC0F60CBEB8",
+				"036D2F160D68EA86C2AB3EF2",
+			);
+			"buildRules" = (
+			);
+			"dependencies" = (
+			);
+			"packageProductDependencies" = (
+				"4318D6942B79354BFEEA4E6B",
+			);
+		};
+		EE6063B603CD960BD24231AA = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "UITests/AtendeBemUITests.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		668FCD252B81C1E83798ED30 = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "EE6063B603CD960BD24231AA";
+		};
+		FC9755D98408D490AE976F3D = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"668FCD252B81C1E83798ED30",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		8834B2781B9750E8A6A331DA = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.cfbundle";
+			"includeInIndex" = "0";
+			"path" = "AtendeBemUITests.xctest";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		DFFA99531B7ED7A11E544B63 = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "A00000000000000000000001";
+			"proxyType" = "1";
+			"remoteGlobalIDString" = "A00000000000000000000011";
+			"remoteInfo" = "AtendeBem";
+		};
+		09F4C36FAD767E0493949155 = {
+			"isa" = "PBXTargetDependency";
+			"target" = "A00000000000000000000011";
+			"targetProxy" = "DFFA99531B7ED7A11E544B63";
+		};
+		EB002E1FE7932889F4D89C70 = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		FBC61D436E9FCD86ECE50761 = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "io.atendebem.app.ui-tests";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"DEVELOPMENT_TEAM" = "FWVSMZ9APG";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"SWIFT_VERSION" = "6.0";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"TEST_TARGET_NAME" = "AtendeBem";
+			};
+		};
+		1EDEE97581370A205B5382A3 = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "io.atendebem.app.ui-tests";
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"DEVELOPMENT_TEAM" = "FWVSMZ9APG";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"SWIFT_VERSION" = "6.0";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"TEST_TARGET_NAME" = "AtendeBem";
+			};
+		};
+		537C1538B9C237F89EB07FBC = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"FBC61D436E9FCD86ECE50761",
+				"1EDEE97581370A205B5382A3",
+			);
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		8E79D5AB9C573D21367FEC97 = {
+			"isa" = "PBXNativeTarget";
+			"name" = "AtendeBemUITests";
+			"productName" = "AtendeBemUITests";
+			"productReference" = "8834B2781B9750E8A6A331DA";
+			"productType" = "com.apple.product-type.bundle.ui-testing";
+			"buildConfigurationList" = "537C1538B9C237F89EB07FBC";
+			"buildPhases" = (
+				"FC9755D98408D490AE976F3D",
+				"EB002E1FE7932889F4D89C70",
+			);
+			"buildRules" = (
+			);
+			"dependencies" = (
+				"09F4C36FAD767E0493949155",
+			);
+			"packageProductDependencies" = (
+			);
+		};
+
 	};
 	rootObject = A00000000000000000000001 /* Project object */;
 }

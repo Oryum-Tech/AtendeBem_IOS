@@ -1,0 +1,14 @@
+AtendeBem 1.3.0 (31) — roteiro preparado para testes internos
+
+Novidades: agenda semanal, filtros de pacientes, modelos privados/editáveis, documentos com busca, perfis por clínica, atalhos da recepção e mais informações do prontuário. LARI recupera sessão e mantém pergunta em falhas; contexto anterior só é incluído após revisão do usuário.
+
+Validar com dados fictícios:
+1. Recepção e médico na mesma clínica: agendar, registrar chegada e acompanhar fila/consulta em ambas as contas. Conferir as ações permitidas a cada perfil; recepção não recebe prontuário nem prescrição.
+2. Trocar de clínica e conferir perfis, listas e preferências. Tentar trocar duas vezes durante carregamento e sair da conta; nenhuma informação anterior deve reaparecer.
+3. Abrir paciente fictício com problemas, sinais vitais, medicações, relatos e evoluções tardias. Comparar unidades, datas, fontes, rótulos e dados ausentes com a web. Simular uma fonte indisponível; não apresentar ausência de doença ou uso.
+4. Agenda Semana: conferir virada do mês, sete dias, erros parciais e atualização manual. Filtros de pacientes: idade, inativos/arquivados e restrições clínicas.
+5. Modelos: copiar, editar campos estruturados, revisar alteração concorrente e excluir modelo próprio. Comparar o resultado na web. Não incluir identificadores de pacientes em modelos.
+6. LARI: enviar pergunta sem identificadores, sessão expirada, falha durante envio, cancelar espera, incluir contexto anterior no rascunho e revisar antes de enviar. Não reenviar mensagem incerta automaticamente.
+7. VoiceOver, maiores fontes, modo escuro, iPhone/iPad e controles alcançáveis com teclado aberto.
+
+Este roteiro não certifica distribuição, execução em dispositivo ou validação clínica. Limites: paridade parcial, histórico remoto LARI sem rota disponível, serviço de equipe limita histórico, moderação da comunidade e materiais reais de loja pendentes.

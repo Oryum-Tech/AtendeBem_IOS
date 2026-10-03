@@ -10,3 +10,16 @@ xcuserdata/
 __pycache__/
 release/*.zip
 sync/state/
+release/builds/
+*.p8
+*.ipa
+*.xcarchive/
+.build-sim/
+.build-*/
+*.xcresult/
+# Local feedback, operational evidence and source-monitor snapshots stay local.
+release/app-store/evidence/
+release/app-store/validation-report.json
+sync/isolated/
+sync/cache/
+.local-repository-backups/

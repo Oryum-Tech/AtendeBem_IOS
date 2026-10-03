@@ -1,0 +1,14 @@
+AtendeBem 1.3.0 (27) — teste com dados de homologação.
+
+Novidades para conferir:
+• Hoje: marca oficial e atalhos configuráveis para Receita, Exames, Consulta e LARI.
+• Consulta: antecedentes resumidos com Mais dados e busca de CID-10.
+• Receita: busca no catálogo de medicamentos, com seleção e revisão pelo profissional.
+• Mais: conversa geral com a LARI, chat da equipe, comunidade médica e relatórios por período/perfil.
+• Agenda e fila carregam em paralelo; PDFs inválidos mostram erro.
+
+Compare os registros criados com o mesmo paciente fictício na web. Confira teclado, texto grande, modo escuro e troca de clínica. Não inclua senhas, códigos de acesso ou informações de pacientes reais no feedback.
+
+Pontos ainda em validação: PDF/assinatura com certificado, aparecimento de evoluções e sincronismo autenticado. Conversas da equipe com 50 ou mais mensagens podem ter histórico incompleto; marcação de leitura pendente. Mídias, comentários e controles completos de moderação da comunidade ainda não estão concluídos. O histórico da conversa com a LARI não pode ser reaberto pelo app nesta versão.
+
+Ao relatar um problema, informe a tela, o resultado esperado e o que aconteceu, sem dados identificáveis. Esta versão é um incremento para teste; não representa paridade completa com a web.

@@ -1,0 +1,15 @@
+AtendeBem 1.3.0 (33) — o que testar
+
+Use somente a clínica e os pacientes fictícios de homologação.
+
+1. Abra uma consulta, retome ou prepare o rascunho e confira alterações não salvas, revisão e confirmação. A confirmação não assina nem encerra o agendamento automaticamente.
+2. Abra LARI nesta consulta. Prepare o texto a enviar, autorize o processamento, revise/edite a resposta e selecione as seções a acrescentar. Confira que as anotações, a queixa, os CIDs e as seções existentes foram preservados. Salvar e confirmar permanecem ações separadas.
+3. Após confirmar a consulta, abra receita, exame ou atestado conforme seu perfil. Confira o paciente e abra o documento exato criado. Revise os campos, a situação de assinatura e, quando disponível, o PDF. Use somente certificado autorizado para homologação.
+4. Em Documentos, confira filtros e avisos de fontes indisponíveis. Falha em uma categoria não deve ocultar as demais. Não repita criação ou assinatura quando o resultado estiver incerto.
+5. No prontuário, consulte triagens, autoria, horários e medidas vinculadas, além de problemas, medicamentos e histórico.
+6. Em Relatórios, selecione Hoje, Esta semana, Este mês, Mês anterior e Personalizado. Confira clínica, intervalo, gráfico e tabela de valores. Falhas não devem virar zero.
+7. Teste os acessos de recepção e profissional, a troca de clínica e a atualização web/iOS com registros fictícios. Nenhuma ação deve aparecer como concluída sem confirmação do serviço.
+
+Pendentes: homologação autenticada completa, acessibilidade no dispositivo, histórico remoto da LARI, áudio, relatórios avançados e demais itens da matriz. Não é uma declaração de paridade completa nem de aprovação clínica.
+
+Limitação conhecida: exames externos podem exibir assinatura e PDF de requisição que o serviço não permite. Essas ações serão recusadas; a distinção na interface e o fluxo nativo de resultados externos ainda precisam ser corrigidos. Não trate uma recusa como documento assinado ou PDF emitido.

@@ -1,0 +1,25 @@
+AtendeBem 1.3.0 (38) — Home e tarefas da LARI
+
+Use somente a clínica de homologação e pacientes fictícios. Esta versão amplia o cliente nativo; não houve alteração da web ou dos serviços. Os fluxos dependem dos acessos e serviços habilitados. Não usar este ciclo de avaliação para decisões clínicas reais.
+
+O que testar
+
+1. Hoje: retomar consulta com anotações locais, conferir próximo horário e atalhos independentes de Receita, Exames, Consulta e LARI. Personalizar, trocar de clínica, voltar do segundo plano e atualizar. Conferir estados vazios, fonte parcial e mudança de dia. As anotações locais não sobrevivem ao encerramento do aplicativo sem salvar no servidor.
+
+2. LARI: abrir Nova tarefa após conversar, usar comandos e voltar às operações em andamento. A troca de clínica ou sessão invalida os dados anteriores. Receita, agendamento, histórico, exames, financeiro, transcrição, indicadores e interações devem respeitar o perfil. Recepção não deve visualizar conteúdo clínico ou financeiro sem autorização correspondente.
+
+3. Agendamento: selecionar paciente, profissional, atendimento, canal e horário retornado pelo sistema. Revisar e confirmar. Comparar o mesmo identificador na web. Se houver resposta perdida, usar Conferir resultado; não repetir a criação por outro caminho.
+
+4. Histórico: conferir antecedentes, alergias, registros e paginação com a web. Verificar avisos de fontes incompletas. A consulta factual não deve gerar um resumo com IA automaticamente.
+
+5. Exames: conferir paciente e todos os itens antes de emitir. O serviço pode assinar já na emissão. Só enviar após conferir a assinatura e os contatos atualizados, por ação separada. Solicitação enfileirada não significa recebimento pelo paciente. Testar uma falha de leitura antes da emissão sem bloquear a edição como se o POST tivesse sido executado.
+
+6. Transcrição: com autorização de todos os participantes e consentimento para processamento pelo Gemini, permitir ou negar microfone; gravar, interromper, colocar em segundo plano e descartar. Parar não envia. Enviar explicitamente, revisar o texto e acrescentar a uma seção da consulta. Mudanças concorrentes devem impedir aplicação sobre uma base antiga. Nenhuma evolução é salva ou assinada automaticamente. Confirmar descarte do áudio e tratamento de falhas.
+
+7. Indicadores: conferir período, fuso, fontes e contagens de sazonalidade; comparar os dados municipais disponíveis. Dados do município não descrevem individualmente os pacientes. Ausência de dados não pode aparecer como zero.
+
+8. Interações: escolher pelo menos dois princípios ativos, revisar e consultar a base disponível. Conferir pares, fontes e datas. Ausência de alerta não garante segurança, e o fluxo não substitui revisão clínica nem consulta de alergias.
+
+9. Configurações: editar, cancelar, salvar, tentar sair com alterações e trocar de contexto. Testar texto grande, VoiceOver, modo escuro, iPhone e iPad.
+
+Nos feedbacks, informe a tarefa, perfil, comportamento esperado e observado, sem nomes de pacientes, documentos, senhas ou códigos de autenticação. As verificações automatizadas e o Archive não substituem estes testes no aparelho e nos serviços de homologação.

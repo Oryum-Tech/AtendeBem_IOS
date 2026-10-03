@@ -1,0 +1,22 @@
+AtendeBem 1.3.0 (30) — testes internos
+
+Correções dos feedbacks do build 27:
+• Receitas, Exames e Consulta agora abrem a escolha de paciente; somente LARI abre a conversa geral.
+• Dia mostra linha do tempo por hora. Lista mostra os agendamentos do dia de forma compacta.
+
+Novas funções:
+• Configurações com busca, grupos, aparência e editor de atalhos. Mais também permite buscar funções.
+• Modelos de receitas e exames: buscar, revisar, aplicar, ajustar os itens e salvar um modelo privado.
+• Vários exames na mesma solicitação, preservando as justificativas dos modelos.
+• Padrão de letra das receitas compartilhado com a web.
+• Cadastro da clínica: consulta e alteração de nome/telefone para gestor/admin.
+• Inclui histórico unificado, perfis/mensagens da comunidade, gestão de publicações, certificado, compartilhamento de PDF e consentimento da LARI com Anthropic e Google Gemini.
+
+Roteiro com dados fictícios:
+1. Toque separadamente nos quatro atalhos e confirme o destino. Teste texto grande e VoiceOver.
+2. Compare Dia/Lista e mude a data. Confira horários com a web.
+3. Mais > Configurações: busque “letra”, altere aparência e confira atalhos após reabrir o app e trocar de clínica.
+4. Receita/Exames > Escolher modelo: revise todos os campos; salve rascunho e compare com a web. Não inclua dados identificáveis do paciente em modelos reutilizáveis.
+5. Teste permissões, falha de rede durante gravação e troca de clínica. Não deve haver reenvio automático incerto.
+
+Pendências: homologação clínica; evoluções ausentes do caso do doutor; assinatura final de evolução; renovação de receitas; especialidades completas; moderação/denúncia/bloqueio na comunidade; mensagens longas acima de 50 itens; recuperação de conversas LARI; mídias reais e declarações finais para publicação pública. O certificado ainda é cadastrado na web. Este build não declara paridade completa nem aprovação clínica.

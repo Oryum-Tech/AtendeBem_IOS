@@ -1,0 +1,34 @@
+Sua rotina clínica, com mais espaço para cuidar.
+
+O AtendeBem reúne agenda, pacientes, documentos e equipe em uma experiência nativa para iPhone e iPad, conectada aos serviços da sua conta AtendeBem.
+
+UM INÍCIO MAIS ÚTIL
+Na Hoje, abra suas ações frequentes, veja o próximo agendamento e retome uma consulta. Acompanhe a sala de espera e personalize os atalhos para Receitas, Exames, Consulta e LARI. Quatro abas principais mantêm sua rotina organizada: Hoje, Agenda, Pacientes e Mais.
+
+LARI, DO PEDIDO À TAREFA
+Peça ajuda para preparar uma receita, agendar, consultar o histórico de um paciente ou solicitar exames. Selecione o registro correto, confira as informações e revise antes de confirmar. A assinatura de uma receita solicita envio pelos serviços da clínica; o envio de exames é uma ação separada. Pedido registrado não comprova entrega ao destinatário.
+
+Com autorização dos participantes e para processamento pelo Google Gemini, grave uma consulta e revise sua transcrição. Use o texto revisado nas anotações; nenhuma evolução é salva ou assinada automaticamente. A LARI também organiza textos selecionados, prepara resumos com fatos e fontes e oferece conversa geral com autorização para uso de IA. Lembre essa escolha por conta e clínica neste aparelho e revogue nas Configurações; notas clínicas e áudio pedem autorização própria.
+
+INFORMAÇÕES COM CONTEXTO
+Consulte antecedentes, alergias, problemas clínicos, sinais vitais, medicações, triagens e a linha do tempo do paciente conforme seu acesso. Confira origem e data dos registros. Pause a consulta e continue na mesma sessão do aplicativo; salve no servidor para retomar depois de encerrar o app ou em outro dispositivo.
+
+DOCUMENTOS PARA O CUIDADO
+Pesquise medicamentos e CID-10, use modelos privados de receitas e exames, revise os campos e consulte PDFs e a situação da assinatura retornada pelo serviço. Receba exames externos e anexe laudos com o perfil autorizado. A assinatura depende das permissões, do certificado e das regras aplicáveis ao documento.
+
+Na LARI, pesquise medicamentos por nome ou princípio ativo, confira os dados do catálogo e abra a busca correspondente no Bulário oficial. O aplicativo ainda não incorpora o texto integral das bulas.
+
+A consulta de interações apresenta alertas, fontes e datas de revisão da base disponível. A cobertura é limitada: nenhum alerta encontrado não garante ausência de interação nem segurança da combinação. O aplicativo não calcula doses ou substitui a avaliação profissional.
+
+AGENDA, EQUIPE E GESTÃO
+Consulte dia, lista ou semana, organize horários e acompanhe os atendimentos. Alterne entre clínicas autorizadas, com ações adequadas para recepção e profissionais. Converse com a equipe e acompanhe publicações, avatares e interações na comunidade profissional, preservando o anonimato.
+
+Perfis autorizados podem consultar o financeiro por período e explorar indicadores de atendimentos, distribuição municipal e sazonalidade. Relatórios mostram o recorte, as fontes e as limitações, com até oito intervalos reais por página. Dados demográficos municipais não representam, por si só, o perfil dos pacientes da clínica.
+
+SEUS DADOS, SEU ACESSO
+Crie sua conta gratuitamente no app; condições para experimentar são consultadas no cadastro. O uso requer conta ativa, vínculo autorizado com uma clínica e internet. As funções dependem das permissões, contratação e serviços habilitados. As telas permitem atualizar os dados; alterações de configurações deixam claro quando é necessário salvar.
+
+INFORMAÇÕES PARA USO CLÍNICO
+Rascunhos, transcrições e sugestões de inteligência artificial exigem revisão de profissional habilitado. O aplicativo não vende medicamentos e não oferece atendimento de emergência. Não compartilhe identificadores de pacientes na comunidade ou no chat geral.
+
+Precisa de ajuda? Acesse www.atendebem.io ou escreva para contato@atendebem.io.

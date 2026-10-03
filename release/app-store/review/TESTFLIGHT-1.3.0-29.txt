@@ -1,0 +1,14 @@
+AtendeBem 1.3.0 (29) — testes internos
+
+Novidades:
+• Perfis profissionais, descoberta de colegas e mensagens diretas da comunidade.
+• Edição e exclusão das próprias publicações, compartilhamento e imagens sob demanda.
+• Marcar todas as mensagens de uma conversa como lidas, com confirmação.
+• Histórico unificado com filtros, páginas anteriores e avisos de fontes indisponíveis.
+• Consulta do certificado digital e conferência antes de assinar receitas/exames, quando autorizada pelo serviço.
+• Compartilhamento de PDF pelo sistema, com aviso de confidencialidade.
+• Consentimento da LARI identificando Anthropic (Claude) e Google (Gemini).
+
+Teste com dados fictícios: Hoje > atalhos; Mais > Comunidade; Chat da equipe; Pacientes > Evoluções > Histórico; Documentos > PDF; Mais > Certificado digital. Confirme na web as alterações feitas pelo app sem modificar configurações dos serviços. Verifique permissões, troca de clínica, reconexão, VoiceOver e texto grande.
+
+Limitações: o histórico de mensagens acima de 50 itens depende de correção do serviço. Denúncia, bloqueio e moderação completa da comunidade ainda não estão disponíveis. LARI não recupera conversas antigas. O registro de certificado continua na web. Não usar este build como confirmação de prontidão clínica ou de publicação pública.

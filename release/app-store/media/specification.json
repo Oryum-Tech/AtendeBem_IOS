@@ -1,0 +1,113 @@
+{
+  "checked_at": "2026-10-02",
+  "locale": "pt-BR",
+  "capture_status": "pending",
+  "devices": [
+    {
+      "id": "iphone-6.9",
+      "screenshot_pixels": [
+        1320,
+        2868
+      ],
+      "preview_pixels": [
+        886,
+        1920
+      ]
+    },
+    {
+      "id": "ipad-13",
+      "screenshot_pixels": [
+        2064,
+        2752
+      ],
+      "preview_pixels": [
+        1200,
+        1600
+      ]
+    }
+  ],
+  "shots": [
+    {
+      "order": 1,
+      "id": "hoje",
+      "screen": "Hoje",
+      "headline": "Seu dia. Seus atalhos.",
+      "caption": "Receitas, exames, consulta e LARI por perto.",
+      "instruction": "Capturar o build40 real em homologação, com atalhos antes das retomadas e do próximo agendamento fictício; sem esconder avisos de carregamento. Captura pendente, não comprovada por compilação."
+    },
+    {
+      "order": 2,
+      "id": "documentos",
+      "screen": "Documentos do paciente",
+      "headline": "Do registro ao documento.",
+      "caption": "Revise receitas e exames e consulte o PDF.",
+      "instruction": "Usar paciente fictício e documento de homologação. Não fabricar selo de assinatura."
+    },
+    {
+      "order": 3,
+      "id": "historico",
+      "screen": "Histórico do paciente",
+      "headline": "Contexto para o cuidado.",
+      "caption": "Consulte a linha do tempo dos serviços da clínica.",
+      "instruction": "Mostrar registros fictícios e estado real de atualização. Não ocultar aviso de fonte indisponível."
+    },
+    {
+      "order": 4,
+      "id": "agenda",
+      "screen": "Agenda",
+      "headline": "O próximo atendimento, à mão.",
+      "caption": "Organize horários e acompanhe sua rotina.",
+      "instruction": "Data demonstrativa e agendamentos sintéticos, sem nomes reais."
+    },
+    {
+      "order": 5,
+      "id": "lari",
+      "screen": "LARI",
+      "headline": "Peça ajuda. Confira. Continue.",
+      "caption": "Tarefas da LARI para sua rotina clínica.",
+      "instruction": "Capturar o catálogo real de tarefas no build40, com perfil de homologação autorizado. Não fabricar execução, resposta da IA ou resultado clínico. Captura pendente."
+    },
+    {
+      "order": 6,
+      "id": "equipe",
+      "screen": "Chat da equipe",
+      "headline": "Sua equipe mais próxima.",
+      "caption": "Mensagens no contexto da clínica.",
+      "instruction": "Contas fictícias e mensagens autorizadas de homologação; nada de pacientes reais."
+    },
+    {
+      "order": 7,
+      "id": "comunidade",
+      "screen": "Comunidade médica",
+      "headline": "Conhecimento que aproxima.",
+      "caption": "Encontre colegas e compartilhe experiências.",
+      "instruction": "Publicações fictícias de homologação; liberar uso público somente após moderação, denúncia e bloqueio."
+    },
+    {
+      "order": 8,
+      "id": "relatorios",
+      "screen": "Relatórios",
+      "headline": "Veja o período com clareza.",
+      "caption": "Acompanhe atendimentos e receitas conforme seu perfil.",
+      "instruction": "Indicadores reais da clínica de testes; não inventar métricas ou alegações de produtividade."
+    }
+  ],
+  "video": {
+    "duration_seconds": 25,
+    "fps": 30,
+    "codec": "h264",
+    "maximum_bytes": 500000000,
+    "poster_seconds": 5
+  },
+  "receipt_fields": {
+    "build": "exact version and build",
+    "device": "actual device model",
+    "os": "actual OS version",
+    "captured_at": "ISO 8601",
+    "reviewer": "responsible reviewer",
+    "sha256": "hash of final file",
+    "source_file": "relative path of real source capture",
+    "real_app_capture": true,
+    "synthetic_data_only": true
+  }
+}

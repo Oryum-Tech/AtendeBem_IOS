@@ -1,0 +1,10 @@
+AtendeBem 1.3.0 (36) — tarefas LARI em homologação
+
+1. Em LARI, use uma conta autorizada e um paciente fictício. Peça a preparação de uma receita com medicamento, paciente e dados explícitos. Confirme identidade e apresentação, complete os campos clínicos e revise o rascunho antes de assinar. Não prescreva para pacientes reais nos testes.
+2. Confirme os contatos apresentados antes da assinatura: o serviço inicia o envio após assinar. Verifique o evento no ambiente de homologação. A assinatura confirmada não é um recibo de entrega ao paciente.
+3. Teste interrupção de rede e retomada na mesma conversa. A conferência deve usar somente leitura, sem repetir criação ou assinatura automaticamente. A retomada não persiste após encerrar a conversa/app.
+4. Como gestor, admin ou contabilista, peça “financeiro de janeiro desse ano”. Confira datas e valores com a web, relatório parcial e compartilhamento. Um médico sem papel financeiro não deve ter acesso.
+5. Confirme que a assinatura está disponível para a receita preparada na tarefa ou no formulário da sessão. Receitas reabertas sem o payload completo da criação devem explicar a indisponibilidade da assinatura a partir de resumo parcial.
+6. Teste troca de clínica, perfil, retorno à tela, VoiceOver e texto ampliado. Campos/modelos clínicos especiais indisponíveis no atalho devem permanecer bloqueados.
+
+Build local não comprova funcionamento dos contratos em produção, persistência web/iOS, assinatura ou entrega real. O resumo de receita pública pode omitir campos; o atalho não é prescrição clínica autônoma. Nenhuma alteração foi feita na web, serviços ou banco.

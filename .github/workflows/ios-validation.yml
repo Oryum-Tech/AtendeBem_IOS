@@ -44,8 +44,6 @@ jobs:
           -configuration Debug -destination 'generic/platform=iOS Simulator'
           -derivedDataPath .build/ios CODE_SIGNING_ALLOWED=NO
           ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build
-      - name: Validate prepared App Store materials
-        run: python3 scripts/app_store_bundle.py validate
 
 # This workflow becomes active only after the iOS project is published as its
 # own repository. Dispatch validates this revision; it does not translate SwiftUI,

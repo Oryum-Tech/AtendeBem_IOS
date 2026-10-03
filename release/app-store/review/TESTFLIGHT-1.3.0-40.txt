@@ -1,0 +1,23 @@
+AtendeBem 1.3.0 (40) — início, cadastro e consentimento
+
+Roteiro preparado; não confirma entrega ou QA concluído. Confira a versão instalada e use somente clínica de homologação e dados fictícios. O incremento preserva as quatro abas e não altera a versão web ou os serviços.
+
+Novidades
+• Hoje com atalhos antes das retomadas e do próximo atendimento.
+• Apresentação e cadastro nativos, imagem oficial e layout adaptável ao iPad. Condições para experimentar consultadas no catálogo; sete categorias de cadastro não significam fichas especializadas completas.
+• Autorização de texto geral da LARI lembrada por conta/clínica/aparelho e revogável nas Configurações. SOAP, paciente e áudio continuam com autorização própria.
+• Relatórios com até oito intervalos reais por página e valores exatos; avatares da comunidade preservando anonimato.
+• Techbem em Mais com links do aplicativo independente Meu Prontuário; sem conexão automática de contas.
+• Início nativo de exclusão em Mais → Configurações → Minha conta → Excluir minha conta. Operação DPO e QA pendentes.
+
+O que testar
+1. Entrada: e-mail/senha, MFA, recuperação e retorno ao login. Conhecer o AtendeBem e abrir cadastro; conferir os planos atuais. Criar somente um espaço de teste autorizado. Resposta incerta não deve repetir a criação.
+2. Hoje: cada atalho deve abrir sua função. Conferir próximo atendimento, retomadas, ausência de agenda, fonte parcial e perfis de recepção/profissional. Anotações locais não sobrevivem ao encerramento do app sem salvar no servidor.
+3. LARI: autorizar texto geral, fechar/reabrir e trocar conta/clínica. Revogar com o aviso fechado e com duas janelas abertas. Novos envios devem exigir nova autorização; processamento já recebido pelo serviço pode continuar. SOAP e gravação não devem herdar esse aceite.
+4. Relatórios: períodos curtos/longos, anteriores/próximos, números exatos, zeros e distribuição indisponível ou inconsistente. Conferir valores na mesma clínica e período da web; não estimar intervalos ausentes.
+5. Comunidade: foto disponível, ausente e com falha; publicação anônima não deve revelar foto ou iniciais. Trocar de clínica e conferir descarte da imagem anterior. Denúncia, bloqueio e moderação continuam pendentes para revisão pública.
+6. Techbem: abrir App Store/site e compartilhar somente o link do aplicativo, sem dados de pacientes.
+7. Exclusão: numa conta de teste autorizada, abrir o caminho nativo, revisar os efeitos e cancelar. Validar encaminhamento e desfecho com o responsável DPO em rodada específica. Abrir o fluxo não comprova envio, protocolo de API ou conta apagada.
+8. Regressões: agendamento, histórico, receita/exames com revisão, financeiro e transcrição continuam sujeitos aos perfis e à confirmação dos serviços. Conferir texto grande, VoiceOver, tema escuro, iPhone e iPad.
+
+No feedback, informe build, aparelho/iOS, perfil, passos, resultado esperado e observado. Não inclua pacientes reais, senhas ou códigos. Testes automatizados e compilação não substituem este roteiro no aparelho e nos serviços.

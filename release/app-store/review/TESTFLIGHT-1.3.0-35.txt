@@ -1,0 +1,15 @@
+AtendeBem 1.3.0 (35) — painel da equipe e preparação da consulta
+
+Usar somente clínica e pacientes fictícios de homologação. Este roteiro é uma lista de verificações pendentes, não prova de teste executado.
+
+1. Com recepção, conferir na Hoje quem aguarda e quem está em atendimento. Comparar posição, chegada, horários, nomes e profissional com os mesmos registros na web. Abrir uma linha deve abrir exatamente aquele agendamento.
+2. Trocar o profissional da fila e atualizar. Alterar a clínica enquanto uma leitura está em andamento: dados antigos não podem ser exibidos. O profissional sem visão de equipe deve receber o recorte próprio indicado na interface.
+3. No detalhe de um horário permitido, pedir confirmação. Conferir paciente e horário antes de confirmar a solicitação de mensagem. A situação deve distinguir pedido registrado de resposta do paciente, sem afirmar entrega da mensagem.
+4. Interromper a conexão depois do pedido e consultar a situação. Não repetir automaticamente a mensagem. Respeitar o intervalo previsto pelo serviço e mudanças do agendamento após a revisão inicial.
+5. Com perfil clínico autorizado, abrir Preparar consulta com fontes na ficha ou consulta. Abrir a tela não deve gerar conteúdo. Conferir a explicação do processamento, autorizar e solicitar o resumo.
+6. Comparar narrativa, fatos, trechos e referências com um prontuário fictício conhecido. Conferir data da geração, datas das fontes, limites do extrato e conteúdos não assinados. O resumo não deve ser apresentado como evolução nem ser salvo ou assinado automaticamente.
+7. Testar narrativa sem fontes compatíveis, narrativa indisponível, erro de prontuário e sessão vencida. A interface deve distinguir essas situações de histórico vazio. Recuperar sessão não deve repetir a geração automaticamente.
+8. Trocar clínica/paciente, fechar a tela ou interromper a espera durante a geração. Não mostrar respostas tardias. Cancelar a espera local não garante interrupção do processamento remoto.
+9. Validar iPhone e iPad, VoiceOver, texto ampliado, orientação e navegação de volta, mantendo quatro abas principais.
+
+O pacote inclui exames/resultados externos do34 e incrementos anteriores. Permanecem paridade parcial, anexos gerais do prontuário, assinatura final de evolução e demais pendências da matriz. A homologação autenticada e a validação de persistência web/iOS precisam ser registradas separadamente dos testes locais e do Archive.

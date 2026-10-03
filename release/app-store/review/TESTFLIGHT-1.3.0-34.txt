@@ -1,0 +1,15 @@
+AtendeBem 1.3.0 (34) — exames e resultados
+
+Use somente clínica e pacientes fictícios de homologação.
+
+1. Com o perfil de recepção, abra um paciente e entre em Exames e resultados. Confira que esse acesso não libera o prontuário clínico nem ações de prescrição ou assinatura.
+2. Receba um exame externo. Confira paciente, itens, tipo e laboratório. Deixe a data desconhecida quando ela não constar no documento. Depois de registrar, continue pelo exame criado, sem repetir o cadastro.
+3. Anexe um laudo em texto e/ou arquivo PDF, PNG, JPEG ou DICOM. A seleção no app aceita até 18 MiB; o conteúdo total também é conferido contra o limite do serviço. DICOM não possui visualização diagnóstica no app.
+4. Abra a prévia do arquivo e volte ao formulário. O texto, o arquivo e a indicação informada devem permanecer. Editar o conteúdo deve exigir nova conferência antes de enviar.
+5. Abra o resultado recebido, confira laudo, procedência, data e arquivo. Teste o mesmo exame na web e no iOS com os perfis autorizados. Compartilhar exige uma ação explícita e uma escolha de destino.
+6. Exames externos e origens desconhecidas não devem oferecer assinatura nem PDF de requisição. Uma solicitação normal elegível mantém as regras de autoria e perfil.
+7. Com perda de conexão após enviar, confira o resultado por leitura antes de tentar novamente. O app não repete automaticamente um cadastro/anexo incerto. Troca de clínica deve descartar o contexto anterior.
+
+Mantidas as melhorias do 33: consulta/triagem, LARI por texto com revisão e aplicação seletiva, continuidade de documentos e relatórios por período.
+
+Limites: recuperação de envios incertos mantida em memória nesta sessão; não há transação conjunta nem chave de idempotência no serviço observado. Homologação autenticada, acessibilidade no aparelho, painel recepção–profissional ampliado, resumo LARI com fontes e demais lacunas continuam pendentes. Este pacote não declara paridade completa ou aprovação clínica.

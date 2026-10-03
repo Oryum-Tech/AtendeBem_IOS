@@ -1,0 +1,11 @@
+// Shared by Debug, Release, Xcode archives and the release assistant.
+PRODUCT_NAME = AtendeBem
+PRODUCT_BUNDLE_IDENTIFIER = io.atendebem.app
+INFOPLIST_KEY_CFBundleName = AtendeBem
+INFOPLIST_KEY_CFBundleDisplayName = AtendeBem
+INFOPLIST_KEY_NSMicrophoneUsageDescription = O AtendeBem usa o microfone, com sua autorização, para gravar e transcrever a consulta revisada pelo profissional.
+MARKETING_VERSION = 1.3.0
+CURRENT_PROJECT_VERSION = 40
+DEVELOPMENT_TEAM = FWVSMZ9APG
+SKIP_INSTALL = NO
+VERSIONING_SYSTEM = apple-generic

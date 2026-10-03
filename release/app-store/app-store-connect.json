@@ -1,0 +1,25 @@
+{
+  "apple_id": "6762195438",
+  "bundle_id": "io.atendebem.app",
+  "name": "AtendeBem - Gestão Clínica",
+  "sku": "atendebem-ios",
+  "primary_locale": "pt-BR",
+  "last_observed_version": "1.3.0",
+  "last_observed_build": 40,
+  "build_history_source": "Apple App Store Connect/TestFlight email notifications received2026-10-03 14:48BRT, exact app6762195438/build40.",
+  "verified_on": "2026-10-03",
+  "source": "App Store Connect > Informações do app, sessão autenticada; dados lidos na interface.",
+  "prepared_version": "1.3.0",
+  "prepared_build": 40,
+  "prepared_build_status": "Archive/IPA signed and verified; Apple confirms processing completed and build40 available in TestFlight.",
+  "last_recheck_at": "2026-10-03T17:52:18.765807+00:00",
+  "last_recheck_status": "Apple email notifications confirm build40 available. Public submission and device QA remain pending.",
+  "last_transporter_delivery": {
+    "build": 40,
+    "version": "1.3.0",
+    "processing_completed_local_time": "2026-10-03 14:48:29 America/Sao_Paulo",
+    "observed_at": "2026-10-03T17:52:18.765807+00:00",
+    "evidence": "../builds/AtendeBem-1.3.0-40/delivery-confirmation.json",
+    "latest_status": "Processing completed; available in TestFlight (Apple email confirmation)"
+  }
+}
