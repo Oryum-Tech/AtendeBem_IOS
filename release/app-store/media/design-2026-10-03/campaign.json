@@ -1,0 +1,20 @@
+{
+  "locale": "pt-BR",
+  "created_at": "2026-10-03",
+  "status": "creative_direction_and_templates; authenticated_captures_pending",
+  "devices": {"iphone-6.9": [1320, 2868], "ipad-13": [2064, 2752]},
+  "style": "Navy, emerald, generous whitespace, one benefit per image, real UI as primary content",
+  "shots": [
+    {"order": 1, "id": "hoje", "eyebrow": "SUA ROTINA CLÍNICA", "headline": ["Comece pelo", "que importa."], "caption": "Receitas, exames e consulta.\nSeus atalhos, em um só lugar.", "capture": null, "required_screen": "Hoje with visible shortcuts and synthetic next appointment"},
+    {"order": 2, "id": "agenda", "eyebrow": "AGENDA", "headline": ["Seu dia,", "bem organizado."], "caption": "Veja horários e acompanhe\no próximo atendimento.", "capture": null, "required_screen": "Agenda day presentation, synthetic appointments"},
+    {"order": 3, "id": "prontuario", "eyebrow": "PRONTUÁRIO", "headline": ["Cada paciente.", "Mais contexto."], "caption": "Histórico, registros e documentos\npara continuar o cuidado.", "capture": null, "required_screen": "Synthetic patient history showing actual sources and dates"},
+    {"order": 4, "id": "documentos", "eyebrow": "RECEITAS E EXAMES", "headline": ["Prepare.", "Revise. Continue."], "caption": "Documentos da clínica,\ncom você em cada etapa.", "capture": null, "required_screen": "Actual draft review with synthetic patient, no fabricated signature"},
+    {"order": 5, "id": "lari", "eyebrow": "ASSISTENTE LARI", "headline": ["Uma ajuda", "na sua rotina."], "caption": "Peça uma tarefa e confira\nas informações antes de confirmar.", "capture": null, "required_screen": "Actual LARI task review after layout feedback fix; no generated AI result"},
+    {"order": 6, "id": "equipe", "eyebrow": "SUA CLÍNICA", "headline": ["Equipe próxima.", "Rotina conectada."], "caption": "Acesse sua clínica e converse\ncom os colegas autorizados.", "capture": null, "required_screen": "Internal clinic chat with synthetic colleagues and nonclinical messages"},
+    {"order": 7, "id": "gestao", "eyebrow": "RELATÓRIOS", "headline": ["Veja o período.", "Entenda os dados."], "caption": "Acompanhe indicadores\nconforme seu perfil de acesso.", "capture": null, "required_screen": "Actual period and known synthetic values, retain coverage limitations"},
+    {"order": 8, "id": "ipad", "eyebrow": "TAMBÉM NO IPAD", "headline": ["Mais espaço", "para trabalhar."], "caption": "Sua rotina clínica\nno iPhone e no iPad.", "capture": null, "required_screen": "Actual iPad authenticated layout; never stretch an iPhone screenshot"},
+    {"order": 9, "id": "entrada", "eyebrow": "ATENDEBEM", "headline": ["Sua clínica.", "Sempre por perto."], "caption": "Sua agenda, seus pacientes\ne sua equipe no aplicativo.", "capture": "assets/login-real.png", "required_screen": "Real signed-out login; supplementary creative preview, not the primary store screenshot", "status": "real_login_capture_composition; final_build_recapture_required"}
+  ],
+  "claims_excluded": ["Guaranteed conversion", "Guaranteed clinical outcomes", "All ANVISA leaflets read", "Unlimited automation", "Recording working before feedback resolution", "Free trial price overlay without current catalog check", "Fictitious reviews or Apple endorsements"],
+  "background": {"method": "built-in image_gen", "file": "assets/emerald-background.png", "scope": "decorative background only; never synthesize app UI"}
+}

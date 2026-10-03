@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-10-03T18:56:00.204Z",
+  "status": "creative_preview_not_submission_receipt",
+  "render": "HTML/CSS composition; real source image unchanged",
+  "iphone_preview": {
+    "pixels": [
+      1320,
+      2868
+    ],
+    "alpha": false,
+    "source": "assets/login-real.png",
+    "source_build": "Debug40 prior to final account deletion addition",
+    "final_archive_recapture_required": true,
+    "contains_authenticated_data": false
+  },
+  "background": {
+    "method": "built-in image_gen",
+    "source_original": "exec-fec89dbd-8c6a-472c-8a41-5c13dfdc7ff1.png"
+  },
+  "sha256": {
+    "assets/emerald-background.png": "232f25aeb7c8e46344a1e59ab9ae5bce68c55a78568cf0d933ce697e92db84f5",
+    "assets/login-real.png": "cad95946bbae037a6ef2886a7fa66212e04c3f0884b44b0d2f1f0c5699b85fa5",
+    "assets/logo-dark.png": "5cbf6c019d580ed6e58fe1f88766e8d6ac8221f204b03ed619c7987183ba9686",
+    "09-entrada-iphone-preview.png": "e2292ce0f21954238c5a379e76cc99e7dd617b334dcaa9ebacff6ced6693d5c1"
+  },
+  "authenticated_scene_captures": "pending",
+  "uploaded_to_apple": false
+}

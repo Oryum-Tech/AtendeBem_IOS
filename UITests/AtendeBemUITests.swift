@@ -14,6 +14,9 @@ final class AtendeBemUITests: XCTestCase {
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 10))
         XCTAssertTrue(app.windows.firstMatch.waitForExistence(timeout: 10))
         XCTAssertTrue(app.buttons.firstMatch.exists || app.textFields.firstMatch.exists || app.secureTextFields.firstMatch.exists)
+        if app.textFields["login.email"].waitForExistence(timeout: 5) {
+            attachScreen(app, named: "entrada-sem-autenticacao")
+        }
     }
 
     @MainActor
@@ -38,7 +41,41 @@ final class AtendeBemUITests: XCTestCase {
         XCTAssertTrue(privacy.waitForExistence(timeout: 5))
         privacy.tap()
         XCTAssertTrue(app.staticTexts["Seus dados no aplicativo"].waitForExistence(timeout: 5))
+        attachScreen(app, named: "privacidade-antes-do-login")
     }
+
+    @MainActor
+    func testRegistrationAccessibleBeforeAuthenticationWithoutCreatingAnAccount() throws {
+        let app = XCUIApplication()
+        app.launchArguments += ["-AppleLanguages", "(pt-BR)", "-AppleLocale", "pt_BR"]
+        app.launch()
+        guard app.textFields["login.email"].waitForExistence(timeout: 10) else {
+            throw XCTSkip("A sessão existente é preservada; não capturar dados autenticados.")
+        }
+        let discover = app.buttons["login.discoverAtendeBem"]
+        for _ in 0..<6 {
+            if discover.isHittable { break }
+            app.swipeUp()
+        }
+        XCTAssertTrue(discover.isHittable, "O cadastro deve estar acessível antes do login.")
+        discover.tap()
+        XCTAssertTrue(app.navigationBars["Conheça o AtendeBem"].waitForExistence(timeout: 10))
+        attachScreen(app, named: "apresentacao-do-aplicativo-sem-dados")
+        let createAccount = app.buttons["welcome.createAccount"]
+        XCTAssertTrue(createAccount.waitForExistence(timeout: 5))
+        createAccount.tap()
+        XCTAssertTrue(app.navigationBars["Criar conta"].waitForExistence(timeout: 10))
+        attachScreen(app, named: "apresentacao-do-cadastro-sem-dados")
+    }
+
+    @MainActor
+    private func attachScreen(_ app: XCUIApplication, named name: String) {
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+
     @MainActor
     func testHomeShortcutsOpenTheirOwnDestination() throws {
         let app = XCUIApplication()

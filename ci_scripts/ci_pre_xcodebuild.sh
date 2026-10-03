@@ -1,6 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
+# Apple restores compiled test products on simulator workers without a source
+# checkout. Version preparation belongs to build-for-testing, never test execution.
+if [[ "${CI_XCODEBUILD_ACTION:-}" == "test-without-building" ]]; then
+    echo "Using previously compiled test products; no source version changes."
+    exit 0
+fi
+
 # Xcode Cloud's build sequence is separate from local Transporter builds.
 # Reserve a range above the existing local builds without changing marketing version.
 case "${CI_BUILD_NUMBER:-}" in

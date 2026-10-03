@@ -68,7 +68,10 @@ branch main; autocancelamento; cache habilitado; Latest Release, então Xcode27
 interno. Foram removidas somente as duas variáveis Supabase herdadas deste workflow,
 que não são referenciadas pelo projeto atual. Não foram alterados serviços ou bancos.
 Às15:39 foi salva a pós-ação Teste interno do TestFlight para o grupo existente
-Beta Interna, com3 membros. Essa pós-ação será exercitada no próximo build.
+Beta Interna, com3 membros. O push do commit `30d8cb48b578019a56b13c616e48162b8e122360`
+acionou automaticamente o build **10001** às15:40. O Archive passou, e o TestFlight
+confirmou **1.3.0 (10001), Internos, Em testes, Beta Interna**, com3 convites.
+Isso comprova a entrega automática pelo vínculo GitHub → Apple.
 
 A **Compilação8**, iniciada manualmente às15:30, confirmou o checkout do commit
 `76dc1dcf588986eef9fbbe0a7c62ae70e6f907ff`. Seus registros confirmam57 testes Python,
@@ -86,3 +89,31 @@ Swift6, destino iOS17 e famílias1/2 conferidos. `Config/XcodeCloud.plan.json`
 registra o ambiente e os dois fluxos a aplicar. Esse arquivo registra configuração observada e evoluções planejadas; não é um
 formato importável. A ativação é comprovada pela configuração salva e compilação8. Nenhuma chave
 privada, credencial clínica ou token precisa ser incluído no ambiente de build.
+
+## Simuladores na nuvem
+
+Em03/10 às15:47 foi adicionada ao workflow existente a ação **Testar — iOS**, usando
+o scheme compartilhado AtendeBem, requisito **Necessário para aprovação**, e dois
+destinos: **iPhone18ProMax** e **iPadPro13″(M5)**, ambos com o iOS mais recente do
+Xcode selecionado, então27.0. O scheme contém AtendeBemCoreTests e AtendeBemUITests.
+A primeira execução com essa ação, **10002**, iniciou às15:49 para o mesmo commit
+`30d8cb4`. A compilação dos testes passou, mas os dois workers falharam antes da
+execução porque o pre-build exigia `CI_PRIMARY_REPOSITORY_PATH`. A Apple não fornece
+checkout nessa fase. O script foi corrigido para não preparar fontes somente quando
+`CI_XCODEBUILD_ACTION=test-without-building`; compilação e Archive mantêm as validações.
+Quatro casos de regressão passaram, com61 testes Python locais no total. A execução
+em simulador precisa ser repetida após publicar essa correção.
+
+Os simuladores são executados pela automação da Apple. Não oferecem aqui uma sessão
+remota de uso manual equivalente ao Simulator local. Os UI tests atuais verificam
+abertura, restrição de login sem credenciais e acesso à privacidade. Atalhos e Agenda
+exigem sessão e são explicitamente ignorados quando ela não existe; isso não valida
+sincronismo clínico. Nenhuma senha foi inserida no ambiente Cloud.
+
+Capturas anexadas por UI tests podem compor os artefatos. Foram adicionados anexos
+de entrada, apresentação, cadastro vazio e privacidade, somente depois de verificar
+que o app está sem autenticação. O teste de cadastro navega e não cria uma conta.
+Esses anexos aguardam a execução Cloud corrigida. O conjunto completo da loja
+depende de navegação autenticada e captura das oito cenas com dados de homologação.
+Os layouts editoriais estão em `release/app-store/media/design-2026-10-03`, com
+pendências visíveis.

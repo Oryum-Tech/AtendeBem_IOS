@@ -39,7 +39,14 @@
       "Swift package tests"
     ],
     "distribution": "none",
-    "status": "separate simulator workflow not yet created; package tests run in existing archive post-clone"
+    "status": "iOS Test action added to existing Archive workflow on 2026-10-03 at 15:47 BRT; build10002 failed before test execution; pre-build correction ready with 61 Python tests passed; separate Build/Analyze/PR workflow remains planned",
+    "active_test_destinations": [
+      "iPhone 18 Pro Max / latest selected Xcode iOS 27.0",
+      "iPad Pro 13-inch (M5) / latest selected Xcode iOS 27.0"
+    ],
+    "test_requirement": "required to pass",
+    "test_selection": "shared scheme AtendeBem: AtendeBemCoreTests and AtendeBemUITests",
+    "authenticated_test_session": "not configured; existing clinical UI tests explicitly skip when no session is present"
   },
   "archive": {
     "name": "AtendeBem — Archive",
@@ -58,13 +65,14 @@
   ],
   "observed": {
     "workflow_id": "40B7B87F-3D47-437C-88F0-CEE4969A022F",
-    "successful_build": 8,
-    "source_sha": "76dc1dcf588986eef9fbbe0a7c62ae70e6f907ff",
+    "successful_archive_and_delivery_build": 10001,
+    "source_sha": "30d8cb48b578019a56b13c616e48162b8e122360",
     "python_tests": 57,
     "swift_tests": 356,
+    "test_count_provenance": "Python57 and Swift356 verified in historical build8 logs; build10001 archive/delivery independently verified",
     "xcode": "27 (27A266a)",
     "macos": "Golden Gate 27 (26A428)",
-    "testflight": "1.3.0 (8), internal, ready to test",
-    "next_build_number": 10001
+    "testflight": "1.3.0 (10001), internal, in testing, Beta Interna group with 3 invited testers",
+    "build10002": "build-for-testing passed; both simulator workers failed in pre-build because source checkout is unavailable; correction awaiting Cloud rerun"
   }
 }

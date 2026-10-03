@@ -1,0 +1,33 @@
+:root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #0d2035; color: #fff; }
+.poster { position: relative; width: 1320px; height: 2868px; overflow: hidden; background: #0d2035 url('assets/emerald-background.png') center/cover no-repeat; }
+.poster::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,rgba(10,27,46,.25),transparent 65%); }
+.copy { position: absolute; z-index: 1; top: 100px; left: 98px; right: 80px; }
+.logo { width: 375px; height: 100px; object-fit: contain; object-position: left; display: block; margin-bottom: 60px; }
+.eyebrow { color: #80ecc3; letter-spacing: 5px; font-size: 31px; font-weight: 650; margin: 0 0 38px; }
+h1 { font-size: 112px; line-height: 1.06; letter-spacing: -5px; font-weight: 730; margin: 0; }
+.caption { color: #d4e4ee; font-size: 43px; line-height: 1.36; letter-spacing: -.5px; margin: 35px 0 0; }
+.device { position: absolute; z-index: 1; top: 790px; left: 183px; width: 954px; padding: 15px; border-radius: 100px; background: #10171e; border: 3px solid #98afa6; box-shadow: 0 65px 140px #0009, 0 0 0 8px #0004; overflow: hidden; }
+.device img { display: block; width: 100%; height: auto; border-radius: 83px; }
+.pending { height: 2008px; border-radius: 83px; background: linear-gradient(145deg,#142c43,#164f50); display: flex; flex-direction: column; justify-content: center; gap: 50px; padding: 100px 65px; text-align: center; }
+.pending strong { color: #80ecc3; font-size: 48px; line-height: 1.3; }
+.pending p { color: #cde2e6; font-size: 40px; line-height: 1.4; }
+.draft { position: absolute; bottom: 20px; width: 100%; text-align: center; font-size: 27px; letter-spacing: 3px; color: #d1fff0; }
+.ipad { width: 2064px; height: 2752px; }
+.ipad .copy { left: 128px; right: 128px; }
+.ipad .device { top: 850px; left: 252px; width: 1560px; border-radius: 80px; }
+.ipad .pending { height: 1710px; }
+.ipad h1 { font-size: 140px; }
+.ipad .caption { font-size: 50px; }
+.review { padding: 60px; max-width: 1560px; margin: auto; }
+.review h1 { font-size: 54px; letter-spacing: -2px; }
+.review p { font-size: 20px; line-height: 1.6; max-width: 900px; color: #c8dce4; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 35px; margin-top: 40px; }
+.card { padding: 24px; border-radius: 24px; background: #18334a; }
+.card h2 { font-size: 30px; margin: 15px 0; }
+.card a { color: #83edc4; display: inline-block; margin: 10px 20px 5px 0; }
+.card .tag { font-size: 13px; color: #ffe2a9; }
+.card img { max-width: 100%; }
+a:focus-visible { outline: 3px solid #fff; outline-offset: 6px; }
+@media(max-width:600px) { .review { padding: 25px; } .review h1 { font-size: 36px; } }
