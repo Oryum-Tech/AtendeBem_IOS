@@ -1,0 +1,44 @@
+{
+  "kind": "reviewable_setup_plan_not_a_deployed_apple_workflow",
+  "repository_url": "https://github.com/Oryum-Tech/AtendeBem_IOS.git",
+  "branch": "main",
+  "container_file_path": "AtendeBem.xcodeproj",
+  "scheme": "AtendeBem",
+  "product": {
+    "name": "AtendeBem",
+    "bundle_id": "io.atendebem.app",
+    "apple_id": "6762195438",
+    "development_team": "FWVSMZ9APG",
+    "deployment_target": "17.0",
+    "device_families": ["iPhone", "iPad"]
+  },
+  "environment": {
+    "xcode": "latest stable version available in Xcode Cloud with Swift 6",
+    "macos": "supported version paired with selected Xcode",
+    "dependencies": "committed local Packages/AtendeBemKit",
+    "secrets_required_by_build": [],
+    "clinical_credentials_in_ci": false
+  },
+  "validation": {
+    "name": "AtendeBem — Validação",
+    "start": ["main changes", "pull requests into main"],
+    "actions": ["Build Debug iOS", "Analyze iOS", "Test iPhone", "Test iPad"],
+    "post_clone_checks": ["Python automation tests", "Swift package tests"],
+    "distribution": "none"
+  },
+  "archive": {
+    "name": "AtendeBem — Archive e TestFlight",
+    "start": "manual",
+    "configuration": "Release",
+    "platform": "iOS",
+    "signing": "Apple managed signing for FWVSMZ9APG",
+    "distribution": "internal TestFlight after validation",
+    "public_review_submission": "explicit separate action"
+  },
+  "cloud_build_number": "10000 + CI_BUILD_NUMBER; range 10001...99999",
+  "activation_evidence_required": [
+    "Apple product and repository identifiers read from authenticated API or UI",
+    "Saved workflow and selected Xcode/macOS versions",
+    "Successful build run for exact published commit"
+  ]
+}

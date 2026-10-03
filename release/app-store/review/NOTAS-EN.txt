@@ -1,6 +1,6 @@
 INTERNAL PREPARATION — DO NOT SUBMIT FOR PUBLIC REVIEW YET
 
-AtendeBem 1.3.0 (40): native registration, adaptive welcome/login, revocable saved general-text AI consent, avatars, paged reports and Today shortcuts before the next appointment. Device/service QA, review account, media, Archive/IPA40 and upload are unconfirmed.
+AtendeBem 1.3.0 (40): native registration, adaptive welcome/login, revocable saved general-text AI consent, avatars, paged reports and Today shortcuts before the next appointment. Archive/IPA40 verified; Apple confirmed TestFlight availability. Device/service QA, review account and media pending.
 
 Native SwiftUI for healthcare professionals and clinic teams. Clinical use requires an active account, authorized clinic membership and internet. Existing members sign in; clinic owners can register natively. The app uses the same services as AtendeBem web, without changing the web, backend or database. Tabs: Hoje, Agenda, Pacientes and Mais.
 
