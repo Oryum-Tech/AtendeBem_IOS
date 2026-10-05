@@ -3,6 +3,7 @@ import SwiftUI
 
 struct LARIChatView: View {
     @Environment(AppState.self) private var app
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var conversation: LARIConversation?
     @State private var messages: [Entry] = []
     @State private var draft = ""
@@ -17,6 +18,7 @@ struct LARIChatView: View {
     @State private var operationID: UUID?
     @State private var contextNotice: String?
     @State private var showTaskCatalog = false
+    @State private var showsAllStarters = false
     @State private var taskSearch = ""
     @State private var onlyTasksToContinue = false
     @State private var selectedTask: LocalTaskRequest?
@@ -53,8 +55,7 @@ struct LARIChatView: View {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 20) {
                             if messages.isEmpty && taskHistory.isEmpty {
-                                ContentUnavailableView("Como posso ajudar?", systemImage: "sparkles",
-                                    description: Text("Cuide da consulta e da rotina da clínica em um só lugar. Cada tarefa mostra os dados usados e respeita seu acesso."))
+                                introduction
                                 if let user = app.user {
                                     taskStarters(user: user)
                                 }
@@ -151,6 +152,8 @@ struct LARIChatView: View {
                             }
                             Color.clear.frame(height: 1).id("latest")
                         }.padding()
+                            .frame(maxWidth: 840)
+                            .frame(maxWidth: .infinity)
                     }
                     .scrollDismissesKeyboard(.interactively)
                     .onChange(of: messages.count) { _, _ in proxy.scrollTo("latest", anchor: .bottom) }
@@ -222,6 +225,7 @@ struct LARIChatView: View {
             app.lariTasks.invalidateAll()
             selectedTask = nil
             taskSearch = ""; onlyTasksToContinue = false
+            showsAllStarters = false
         }
     }
     private func taskCard(_ request: LocalTaskRequest) -> some View {
@@ -279,34 +283,66 @@ struct LARIChatView: View {
         case .clarify, .conversation: EmptyView()
         }
     }
+    private var introduction: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label("Como posso ajudar?", systemImage: "sparkles")
+                .font(.title2.bold())
+                .fixedSize(horizontal: false, vertical: true)
+            Text("Cuide da consulta e da rotina da clínica em um só lugar. Cada tarefa mostra os dados usados e respeita seu acesso.")
+                .font(.subheadline).foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }.frame(maxWidth: .infinity, alignment: .leading)
+    }
+    private var starterColumns: [GridItem] {
+        dynamicTypeSize.isAccessibilitySize
+            ? [GridItem(.flexible(), alignment: .top)]
+            : [GridItem(.adaptive(minimum: 300), spacing: 12, alignment: .top)]
+    }
     private func taskStarters(user: User) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
+        let matchingTasks = LARITaskRoute.availableTasks(for: user, matching: taskSearch)
+        let isSearching = taskSearch.trimmedOrNil != nil
+        let presentedTasks = showsAllStarters || isSearching ? matchingTasks : Array(matchingTasks.prefix(4))
+        return VStack(alignment: .leading, spacing: 12) {
             Text("O que você precisa fazer?").font(.headline)
             TextField("Buscar tarefa: prontuário, áudio, bulas…", text: $taskSearch)
                 .textFieldStyle(.roundedBorder).autocorrectionDisabled()
                 .accessibilityLabel("Buscar tarefa da LARI")
                 .accessibilityIdentifier("lari.taskSearch")
-            if LARITaskRoute.availableTasks(for: user, matching: taskSearch).isEmpty {
+            if matchingTasks.isEmpty {
                 Text("Nenhuma tarefa encontrada para seu acesso. Tente outro termo.")
                     .font(.subheadline).foregroundStyle(.secondary)
             }
-            ForEach(LARITaskRoute.availableTasks(for: user, matching: taskSearch)) { route in
-                Button {
-                    startTask(command: route.starter, route: route, preservingDraft: true)
-                    showTaskCatalog = false
-                } label: {
-                    HStack(alignment: .top, spacing: 12) {
-                        Image(systemName: route.symbol).frame(width: 24).font(.title3)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(route.title).font(.subheadline.bold())
-                            Text(route.explanation).font(.caption).foregroundStyle(.secondary).multilineTextAlignment(.leading)
-                        }
-                        Spacer(minLength: 0)
-                        Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
-                    }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
-                }.buttonStyle(.bordered).accessibilityIdentifier("lari.starter.\(route.rawValue)")
+            LazyVGrid(columns: starterColumns, alignment: .leading, spacing: 12) {
+                ForEach(presentedTasks) { route in
+                    taskStarter(route)
+                }
+            }
+            if !isSearching && matchingTasks.count > 4 {
+                Button(showsAllStarters ? "Mostrar menos" : "Ver todas as tarefas (\(matchingTasks.count))") {
+                    showsAllStarters.toggle()
+                }.frame(minHeight: 44)
+                    .accessibilityIdentifier("lari.allTasks")
             }
         }.id("task-catalog")
+    }
+    private func taskStarter(_ route: LARITaskRoute) -> some View {
+        Button {
+            startTask(command: route.starter, route: route, preservingDraft: true)
+            showTaskCatalog = false
+        } label: {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: route.symbol).font(.title3).frame(width: 28)
+                    .accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(route.title).font(.headline).foregroundStyle(.primary)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Text(route.explanation).font(.footnote).foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }.multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
+                Image(systemName: "chevron.right").font(.footnote).foregroundStyle(.secondary)
+                    .accessibilityHidden(true)
+            }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading).padding(12)
+        }.buttonStyle(.bordered).accessibilityIdentifier("lari.starter.\(route.rawValue)")
     }
     private func resetConversation(keepDraft: Bool) {
         app.lariTasks.discardAudioSessions()

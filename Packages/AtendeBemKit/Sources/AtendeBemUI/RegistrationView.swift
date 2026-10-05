@@ -57,7 +57,6 @@ struct RegistrationView: View {
         .navigationTitle("Criar conta")
         .inlineTitle()
         .tint(Brand.accent)
-        .accessibilityIdentifier("registration.screen")
         .task {
             await updateSubmissionState()
             if submissionState == .ready { await loadPlans() }

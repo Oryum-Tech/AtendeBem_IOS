@@ -4,11 +4,29 @@ import Observation
 import SwiftUI
 #if os(iOS)
 import AVFoundation
+import UIKit
 #endif
 
 @MainActor @Observable
 final class LARIAudioTaskSession {
     enum Phase { case ready, requestingPermission, recording, audioReady, transcribing, review, expired }
+    private enum PreparationStep {
+        case checkingContext, microphonePermission, audioSession, protectedFile, recorder
+        var message: String {
+            switch self {
+            case .checkingContext: "Conferindo a sessão e a clínica…"
+            case .microphonePermission: "Aguardando autorização do microfone…"
+            case .audioSession: "Preparando o microfone…"
+            case .protectedFile, .recorder: "Preparando a gravação…"
+            }
+        }
+    }
+    private enum RecordingError: Error, LocalizedError {
+        case unavailable
+        var errorDescription: String? {
+            "O aparelho não conseguiu iniciar a gravação. Encerre outras gravações ou chamadas e tente novamente. Você pode continuar anotando a consulta sem gravar."
+        }
+    }
     var patientConsent = false
     var aiConsent = false
     var transcript = ""
@@ -17,6 +35,8 @@ final class LARIAudioTaskSession {
     private(set) var phase = Phase.ready
     private(set) var error: String?
     private(set) var cleanupError: String?
+    private(set) var needsMicrophoneSettings = false
+    private var preparationStep: PreparationStep?
     private static var activeFolders = Set<URL>()
     private let api: APIClient
     private let context: UUID
@@ -32,7 +52,8 @@ final class LARIAudioTaskSession {
     var isWorking: Bool { [.requestingPermission, .recording, .transcribing].contains(phase) }
     var isContextCurrent: Bool { current() }
     var hasContent: Bool { audioURL != nil || !transcript.isEmpty }
-    var canStart: Bool { phase == .ready && patientConsent && aiConsent }
+    var canStart: Bool { phase == .ready && patientConsent && aiConsent && cleanupError == nil }
+    var preparationMessage: String { preparationStep?.message ?? "Preparando a gravação…" }
 
     init(api: APIClient, context: UUID, isContextCurrent: @escaping @MainActor () -> Bool) {
         self.api = api; self.context = context; self.current = isContextCurrent
@@ -53,16 +74,29 @@ final class LARIAudioTaskSession {
         cleanupOrphans()
         guard cleanupError == nil else { return }
         let operation = UUID(); generation = operation; phase = .requestingPermission; error = nil
+        needsMicrophoneSettings = false; preparationStep = .checkingContext
+        defer { if generation == operation { preparationStep = nil } }
         #if os(iOS)
-        let permission = await AVAudioApplication.requestRecordPermission()
-        guard generation == operation, current(), patientConsent, aiConsent else { invalidate(); return }
-        guard permission else { phase = .ready; error = "Autorize o microfone nos Ajustes do aparelho para gravar. Você pode continuar anotando a consulta sem gravação."; return }
         do {
+            // This guard validates the session context, not service availability or plan eligibility.
             try await LARIAdvancedAccess.require(api: api, context: context)
-            guard generation == operation, current() else { invalidate(); return }
+            guard generation == operation else { return }
+            guard current(), patientConsent, aiConsent else { invalidate(); return }
+            preparationStep = .microphonePermission
+            let permission = await AVAudioApplication.requestRecordPermission()
+            guard generation == operation else { return }
+            guard current(), patientConsent, aiConsent else { invalidate(); return }
+            guard permission else {
+                phase = .ready; needsMicrophoneSettings = true
+                error = "Autorize o microfone nos Ajustes do aparelho para gravar. Você pode continuar anotando a consulta sem gravação."
+                return
+            }
+            try Task.checkCancellation()
+            preparationStep = .audioSession
             let audioSession = AVAudioSession.sharedInstance()
             try audioSession.setCategory(.record, mode: .default)
             try audioSession.setActive(true)
+            preparationStep = .protectedFile
             let folder = FileManager.default.temporaryDirectory.appendingPathComponent("AtendeBem-audio-\(UUID().uuidString)", isDirectory: true)
             directory = folder; Self.activeFolders.insert(folder)
             try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: false,
@@ -71,6 +105,7 @@ final class LARIAudioTaskSession {
             var values = URLResourceValues(); values.isExcludedFromBackup = true
             try protectedFolder.setResourceValues(values)
             let file = folder.appendingPathComponent("consulta.m4a")
+            preparationStep = .recorder
             let next = try AVAudioRecorder(url: file, settings: [
                 AVFormatIDKey: kAudioFormatMPEG4AAC,
                 AVSampleRateKey: 16_000,
@@ -79,8 +114,9 @@ final class LARIAudioTaskSession {
                 AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue
             ])
             audioURL = file; recorder = next
-            guard next.prepareToRecord(), next.record(forDuration: 15 * 60) else { throw LARIAdvancedError.invalidAudio }
+            guard next.prepareToRecord(), next.record(forDuration: 15 * 60) else { throw RecordingError.unavailable }
             // The file inherits complete protection from its private parent directory.
+            preparationStep = .protectedFile
             try FileManager.default.setAttributes([.protectionKey: FileProtectionType.complete, .posixPermissions: 0o600], ofItemAtPath: file.path)
             seconds = 0; phase = .recording
             ticker = Task { [weak self] in
@@ -96,7 +132,11 @@ final class LARIAudioTaskSession {
                 }
             }
         } catch {
-            stopHardware(); _ = removeAudio(); phase = .ready; self.error = message(for: error)
+            guard generation == operation else { return }
+            stopHardware(); _ = removeAudio()
+            guard current(), patientConsent, aiConsent else { invalidate(); return }
+            phase = .ready
+            self.error = error is CancellationError ? nil : preparationFailureMessage(for: error)
         }
         #else
         phase = .ready; error = "A gravação de consulta está disponível no aplicativo para iPhone e iPad."
@@ -130,7 +170,7 @@ final class LARIAudioTaskSession {
                 let removed = self.removeAudio()
                 guard self.current() else { self.invalidate(); return }
                 self.phase = .ready
-                self.error = message(for: error) + (removed
+                self.error = audioFailureMessage(for: error) + (removed
                     ? " O áudio local foi removido. Nenhuma anotação foi salva; grave novamente se desejar tentar outra vez."
                     : " A remoção do áudio local ainda não foi confirmada. Use Tentar excluir áudio antes de iniciar outra gravação.")
             }
@@ -141,13 +181,33 @@ final class LARIAudioTaskSession {
     @discardableResult func reset() -> Bool {
         generation = UUID(); processing?.cancel(); processing = nil
         stopHardware(); let removed = removeAudio()
-        transcript = ""; disclaimer = ""; seconds = 0; error = nil; phase = removed ? .ready : .audioReady
+        transcript = ""; disclaimer = ""; seconds = 0; error = nil; needsMicrophoneSettings = false; preparationStep = nil
+        phase = removed ? .ready : .audioReady
         return removed
     }
     func invalidate() {
         reset(); patientConsent = false; aiConsent = false; phase = .expired
         // A failed cleanup remains eligible for a retry by the next task in this process.
         if let directory { Self.activeFolders.remove(directory) }
+    }
+    private func preparationFailureMessage(for error: Error) -> String {
+        if error is APIError || error is URLError || error is LARIAdvancedError || error is RecordingError {
+            return audioFailureMessage(for: error)
+        }
+        switch preparationStep {
+        case .protectedFile:
+            return "Não foi possível preparar o áudio temporário protegido neste aparelho. Confira se há espaço disponível e tente novamente. Você pode continuar anotando a consulta sem gravar."
+        case .audioSession, .recorder:
+            return RecordingError.unavailable.localizedDescription
+        default:
+            return "Não foi possível preparar a gravação. Confira sua conexão e tente novamente. Você pode continuar anotando a consulta sem gravar."
+        }
+    }
+    private func audioFailureMessage(for error: Error) -> String {
+        if let advanced = error as? LARIAdvancedError { return advanced.localizedDescription }
+        if let recording = error as? RecordingError { return recording.localizedDescription }
+        if error is CancellationError { return "A transcrição foi interrompida." }
+        return message(for: error)
     }
     private func stopHardware() {
         ticker?.cancel(); ticker = nil
@@ -196,6 +256,7 @@ struct LARITranscriptionTaskView: View {
     @Environment(AppState.self) private var app
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.openURL) private var openURL
     @State private var session: LARIAudioTaskSession?
     @State private var baseline: ConsultationContent?
     @State private var sectionID = ""
@@ -271,7 +332,7 @@ struct LARITranscriptionTaskView: View {
                         .disabled(!session.canStart).accessibilityIdentifier("lari.audio.start")
                 } header: { Text("Antes de gravar") } footer: { Text("Limite de 15 minutos por trecho. Não há gravação em segundo plano.") }
             }
-            if session.phase == .requestingPermission { ProgressView("Aguardando autorização do microfone…") }
+            if session.phase == .requestingPermission { ProgressView(session.preparationMessage) }
             if session.phase == .recording {
                 Section {
                     Label("Gravando · \(session.seconds / 60):\(String(format: "%02d", session.seconds % 60))", systemImage: "record.circle")
@@ -287,7 +348,17 @@ struct LARITranscriptionTaskView: View {
                 }
             }
             if session.phase == .transcribing { ProgressView("Transcrevendo o áudio… Isso pode levar até dois minutos.") }
-            if let error = session.error { Section { Text(error).foregroundStyle(.red) } }
+            if let error = session.error {
+                Section {
+                    Text(error).foregroundStyle(.red)
+                    #if os(iOS)
+                    if session.needsMicrophoneSettings, let url = URL(string: UIApplication.openSettingsURLString) {
+                        Button("Abrir Ajustes do microfone") { openURL(url) }
+                            .accessibilityIdentifier("lari.audio.microphoneSettings")
+                    }
+                    #endif
+                } header: { Text("Confira antes de continuar") }
+            }
             if let cleanupError = session.cleanupError {
                 Section {
                     Text(cleanupError).foregroundStyle(.red)

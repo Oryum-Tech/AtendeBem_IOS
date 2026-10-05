@@ -48,7 +48,6 @@ struct WelcomeView: View {
             .frame(maxWidth: .infinity)
             .background(.regularMaterial)
         }
-        .accessibilityIdentifier("welcome.introduction")
     }
 
     private var details: some View {

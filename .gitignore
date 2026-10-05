@@ -23,3 +23,5 @@ release/app-store/validation-report.json
 sync/isolated/
 sync/cache/
 .local-repository-backups/
+# Isolated checkout used only for the authorized public privacy-policy update.
+.release-web-privacy/

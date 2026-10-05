@@ -63,9 +63,26 @@ final class AtendeBemUITests: XCTestCase {
         attachScreen(app, named: "apresentacao-do-aplicativo-sem-dados")
         let createAccount = app.buttons["welcome.createAccount"]
         XCTAssertTrue(createAccount.waitForExistence(timeout: 5))
+        XCTAssertTrue(createAccount.isHittable, "A ação de criar conta deve estar acessível ao toque.")
         createAccount.tap()
         XCTAssertTrue(app.navigationBars["Criar conta"].waitForExistence(timeout: 10))
+        let clinicName = app.textFields["registration.clinicName"]
+        XCTAssertTrue(clinicName.waitForExistence(timeout: 10), "O cadastro deve apresentar o campo da clínica.")
         attachScreen(app, named: "apresentacao-do-cadastro-sem-dados")
+        let form = [
+            app.collectionViews.containing(.textField, identifier: "registration.clinicName").firstMatch,
+            app.tables.containing(.textField, identifier: "registration.clinicName").firstMatch,
+            app.scrollViews.containing(.textField, identifier: "registration.clinicName").firstMatch
+        ].first(where: { $0.exists })
+        for identifier in ["registration.clinicName", "registration.name", "registration.email"] {
+            let field = app.textFields[identifier]
+            for _ in 0..<6 {
+                if field.isHittable { break }
+                guard let form else { break }
+                form.swipeUp()
+            }
+            XCTAssertTrue(field.isHittable, "O campo \(identifier) deve manter seu identificador e ser acessível no formulário.")
+        }
     }
 
     @MainActor

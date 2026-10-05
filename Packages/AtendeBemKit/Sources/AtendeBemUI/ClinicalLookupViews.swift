@@ -46,31 +46,116 @@ struct ClinicalCodePicker: View {
     @Environment(\.dismiss) private var dismiss
     @State private var search = ""
     @State private var result = RemoteResource<[ClinicalCode]>()
+    @State private var resultContext: UUID?
+    @State private var resultQuery: String?
+    @State private var retryID = UUID()
+    @FocusState private var searchFocused: Bool
+    private var query: String { search.trimmingCharacters(in: .whitespacesAndNewlines) }
+    private var allowed: Bool { app.user?.canReadClinicalData == true }
+    private var searchKey: String { "\(app.contextID)|\(allowed)|\(query)|\(retryID)" }
     var body: some View {
-        List {
-            ConnectionState(updatedAt: result.updatedAt, error: result.error, isLoading: result.isLoading)
-            if search.trimmingCharacters(in: .whitespacesAndNewlines).count < 2 {
-                Text("Busque pelo código ou pela descrição do CID-10.").foregroundStyle(.secondary)
-            }
-            ForEach(result.value ?? []) { item in
-                Button { onSelect(item); dismiss() } label: {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(item.codigo).font(.headline)
-                        Text(item.descricao).foregroundStyle(.primary)
-                    }.frame(minHeight: 44)
+        Group {
+            if allowed {
+                VStack(spacing: 0) {
+                    searchField
+                    resultList
                 }
+            } else {
+                RestrictedState()
             }
-            if result.value?.isEmpty == true { ContentUnavailableView.search(text: search) }
         }
         .navigationTitle("Buscar CID-10").inlineTitle()
-        .searchable(text: $search, prompt: "Código ou descrição")
         .toolbar { Button("Fechar") { dismiss() } }
-        .onChange(of: search) { _, _ in result.clear() }
-        .task(id: search) {
-            let query = search.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard query.count >= 2 else { return }
-            do { try await Task.sleep(for: .milliseconds(350)) } catch { return }
-            await result.load(reset: true, app: app) { try await app.api.get(["sugestoes", "cid"], query: [.init(name: "q", value: query)]) }
+        .onChange(of: query) { _, _ in clearResults() }
+        .onChange(of: app.contextID) { _, _ in clearResults() }
+        .onChange(of: allowed) { _, _ in clearResults() }
+        .task(id: searchKey) { await loadResults() }
+    }
+
+    private var searchField: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Código ou descrição").font(.subheadline.bold())
+            HStack(spacing: 10) {
+                Image(systemName: "magnifyingglass").foregroundStyle(.secondary).accessibilityHidden(true)
+                TextField("Ex.: J00 ou rinite", text: $search)
+                    .autocorrectionDisabled().submitLabel(.search).focused($searchFocused)
+                    #if os(iOS)
+                    .textInputAutocapitalization(.never)
+                    #endif
+                    .accessibilityLabel("Buscar CID-10 por código ou descrição")
+                    .accessibilityIdentifier("clinical.cid.search")
+                    .onSubmit { retryID = UUID(); searchFocused = false }
+                if !search.isEmpty {
+                    Button { search = ""; searchFocused = true } label: {
+                        Image(systemName: "xmark.circle.fill").foregroundStyle(.secondary)
+                    }
+                    .frame(minWidth: 44, minHeight: 44)
+                    .accessibilityLabel("Limpar busca de CID-10")
+                    .accessibilityIdentifier("clinical.cid.clear")
+                }
+            }
+            .frame(minHeight: 44).padding(.horizontal, 12)
+            .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
+            Text("Digite pelo menos 2 caracteres. Depois, selecione o CID nos resultados.")
+                .font(.footnote).foregroundStyle(.secondary)
+        }
+        .padding().background(Brand.background)
+    }
+
+    private var resultList: some View {
+        List {
+            if query.count < 2 {
+                ContentUnavailableView("Encontre o CID-10", systemImage: "magnifyingglass",
+                    description: Text("Busque pelo código completo, pelo início do código ou por uma palavra da descrição."))
+            } else if resultContext == app.contextID, resultQuery == query {
+                ConnectionState(updatedAt: result.updatedAt, error: nil, isLoading: result.isLoading)
+                if let error = result.error {
+                    Section {
+                        Text(error).foregroundStyle(.red)
+                        Button("Tentar a busca novamente") { retryID = UUID() }
+                            .disabled(result.isLoading).accessibilityIdentifier("clinical.cid.retry")
+                    } header: { Text("Não foi possível buscar") }
+                }
+                if let codes = result.value {
+                    if codes.isEmpty {
+                        ContentUnavailableView("Nenhum CID encontrado", systemImage: "magnifyingglass",
+                            description: Text("Confira “\(query)” ou tente outra palavra da descrição. A ausência de resultados não confirma que o código não exista."))
+                    } else {
+                        Section("Selecione o CID-10") {
+                            ForEach(codes) { item in
+                                Button {
+                                    guard allowed, resultContext == app.contextID, resultQuery == query else { return }
+                                    onSelect(item); dismiss()
+                                } label: {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(item.codigo).font(.headline)
+                                        Text(item.descricao).foregroundStyle(.primary)
+                                    }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                                }
+                                .accessibilityHint("Seleciona este CID e retorna à consulta")
+                            }
+                        }
+                    }
+                }
+            } else {
+                ProgressView("Preparando busca…")
+            }
+        }
+        .scrollDismissesKeyboard(.interactively)
+    }
+
+    private func clearResults() {
+        result.clear(); resultContext = nil; resultQuery = nil
+    }
+
+    private func loadResults() async {
+        let requested = query, context = app.contextID
+        guard allowed, requested.count >= 2 else { return }
+        do { try await Task.sleep(for: .milliseconds(350)) } catch { return }
+        guard !Task.isCancelled, allowed, app.contextID == context, query == requested else { return }
+        resultContext = context; resultQuery = requested
+        await result.load(reset: true, app: app) {
+            try await app.api.get(["sugestoes", "cid"], query: [.init(name: "q", value: requested)])
         }
     }
 }

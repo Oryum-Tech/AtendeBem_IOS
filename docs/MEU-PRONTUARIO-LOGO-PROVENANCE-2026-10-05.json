@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-10-05T18:54:48.492007+00:00",
+  "downloaded_at": "2026-10-05T18:47:46.484832+00:00",
+  "product": "Meu Prontuário: Remédios",
+  "app_store_id": "6777473301",
+  "official_source": {
+    "page": "https://meuprontuarioapp.com/imprensa",
+    "link_label": "Ícone do app",
+    "asset_url": "https://meuprontuarioapp.com/icon-512.png",
+    "app_store_page": "https://apps.apple.com/br/app/meu-prontu%C3%A1rio-rem%C3%A9dios/id6777473301",
+    "headers": {
+      "content-type": "image/png",
+      "etag": "\"f8a1ba6f45f8e70654e1ef63ea2cc680\"",
+      "last-modified": "Mon, 05 Oct 2026 18:47:46 GMT",
+      "content-length": "169677"
+    }
+  },
+  "asset": {
+    "path": "Packages/AtendeBemKit/Sources/AtendeBemUI/Resources/Brand.xcassets/MeuProntuarioIcon.imageset/meu-prontuario-icon.png",
+    "sha256": "2a27f504be9eb17a33a7992551bde7e35179a1a0dc968c798990b93a61b41800",
+    "format": "PNG",
+    "width": 512,
+    "height": 512,
+    "bytes": 169677,
+    "byte_preserving_copy": true,
+    "transformations": []
+  },
+  "presentation": {
+    "view": "TechbemView.swift",
+    "asset_name": "MeuProntuarioIcon",
+    "bundle": "AtendeBemUI.module",
+    "point_size": [
+      88,
+      88
+    ],
+    "aspect_fit": true,
+    "original_colors": true,
+    "corner_radius_points": 20,
+    "decorative_image_hidden_from_accessibility": true,
+    "product_title_remains_accessible": true
+  },
+  "scope": "Substitui somente o símbolo genérico pelo ícone oficial no cartão. Links e textos existentes preservados; não adiciona conexão de contas, sincronismo ou dados de pacientes.",
+  "validation": {
+    "visual_source_inspection": true,
+    "runtime_ui_verified": false,
+    "iphone_ipad_layout_verified": false,
+    "build_executed_by_this_task": false
+  }
+}

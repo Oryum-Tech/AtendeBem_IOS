@@ -51,11 +51,12 @@ struct TechbemView: View {
 
     private var productCard: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Image(systemName: "heart.text.clipboard")
-                .font(.largeTitle)
-                .foregroundStyle(Brand.accent)
-                .padding(16)
-                .background(Brand.accent.opacity(0.10), in: RoundedRectangle(cornerRadius: 20))
+            Image("MeuProntuarioIcon", bundle: .module)
+                .renderingMode(.original)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 88, height: 88)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 8) {
                 Text("Meu Prontuário: Remédios")

@@ -7,7 +7,7 @@ struct RegistrationOfferLabel: View {
     @State private var offer: RegistrationPlan?
 
     var body: some View {
-        Text(offer.map { "\($0.trialDias) dias grátis, sem cartão de crédito." }
+        Text(offer.map { "Há planos com \($0.trialDias) dias grátis, sem cartão. Confira as condições ao escolher seu plano." }
              ?? "Conheça os recursos e as condições de cadastro.")
             .task {
                 do {
