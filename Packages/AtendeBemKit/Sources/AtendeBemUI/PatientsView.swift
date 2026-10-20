@@ -35,9 +35,6 @@ struct PatientsView: View {
                         if resource.error != nil { Button("Tentar novamente") { Task { await refresh() } } }
                     }
                     if let result = resource.value {
-                        if let action {
-                            Section { Text("Escolha o paciente para \(action.patientPrompt).").foregroundStyle(.secondary) }
-                        }
                         Section("\(result.total) pacientes") {
                             if result.itens.isEmpty {
                                 ContentUnavailableView("Nenhum paciente retornado", systemImage: "person.crop.circle.badge.magnifyingglass", description: Text(filters.activeCount > 0 ? "Ajuste os filtros ou tente outra busca." : "Tente outro nome ou CPF."))

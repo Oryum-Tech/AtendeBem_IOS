@@ -25,11 +25,9 @@ struct ConnectionState: View {
                     .foregroundStyle(.red)
                     .accessibilityIdentifier("connection.error")
             }
+            // "Última atualização: HH:MM" saiu a pedido do Kalleby (14/10/2026): era
+            // ruído em toda lista. `updatedAt` continua no contrato para quem chama.
             if isLoading { ProgressView("Atualizando…") }
-            if let updatedAt {
-                Text("Última atualização: \(updatedAt.formatted(date: .omitted, time: .shortened))")
-                    .font(.caption).foregroundStyle(.secondary)
-            }
         }
     }
 }
